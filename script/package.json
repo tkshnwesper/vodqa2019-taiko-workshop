@@ -1,0 +1,22 @@
+{
+  "name": "script",
+  "version": "1.0.0",
+  "description": "",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/register": "^7.6.2",
+    "@babel/runtime": "^7.6.3",
+    "taiko": "^1.0.2",
+    "taiko-auth": "file:../plugin"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.6.3"
+  }
+}

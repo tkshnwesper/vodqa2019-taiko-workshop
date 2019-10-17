@@ -1,0 +1,21 @@
+{
+  "name": "taiko-auth",
+  "version": "1.0.0",
+  "description": "Auto-authentication plugin for taiko",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel index.js -d lib"
+  },
+  "author": "Saurabh",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3"
+  },
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/runtime": "^7.6.3"
+  }
+}
