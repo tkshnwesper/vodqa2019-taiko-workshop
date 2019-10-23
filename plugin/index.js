@@ -9,20 +9,6 @@ export function init(taiko, eventEmitter) {
   _below = below;
   _textBox = textBox;
   _write = write;
-
-  eventEmitter.addListener(
-    "success",
-    message =>
-      String(message).startsWith("Navigated to URL") &&
-      onSuccessfulNavigation(message)
-  );
-}
-
-function onSuccessfulNavigation(message) {
-  const matches = String(message).match(/\/([^\/]*)/);
-  if (matches.length && matches.includes("login")) {
-    fillForm();
-  }
 }
 
 export function credentials(username, password) {
