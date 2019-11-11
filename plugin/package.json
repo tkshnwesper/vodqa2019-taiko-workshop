@@ -1,7 +1,7 @@
 {
   "name": "taiko-password",
   "version": "1.0.0",
-  "description": "Auto-authentication plugin for taiko",
+  "description": "Password validation plugin",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
