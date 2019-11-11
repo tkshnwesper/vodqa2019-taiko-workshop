@@ -14,7 +14,8 @@
     "@babel/register": "^7.6.2",
     "@babel/runtime": "^7.6.3",
     "taiko": "^1.0.2",
-    "taiko-auth": "file:../plugin"
+    "taiko-auth": "file:../plugin",
+    "taiko-password": "file:../plugin"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.6.3"

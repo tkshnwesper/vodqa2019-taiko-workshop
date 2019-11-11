@@ -1,20 +1,14 @@
 import { openBrowser, closeBrowser, goto, button, click } from "taiko";
-import { credentials } from 'taiko-auth'
+import { options, validatePassword } from 'taiko-auth'
 
 (async function(){
-  const BASE_URL = 'http://localhost:8080'
-
-  credentials("test", "test");
+  options({ minLength: 6, errorMessage: 'Password must be longer than 6 characters' });
 
   await openBrowser({ headless: false });
 
-  await goto(BASE_URL + "/login");
+  await goto('http://localhost:3000');
 
-  await click(button('Login'));
-
-  await goto(BASE_URL + '/register')
-
-  await goto(BASE_URL + "/login");
+  await validatePassword()
 
   await closeBrowser();
 })()

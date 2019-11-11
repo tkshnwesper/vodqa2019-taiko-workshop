@@ -1,29 +1,40 @@
-export const ID = "auth";
+import assert from 'assert'
 
-let _goto, _below, _textBox, _write;
-let _username, _password;
+export const ID = "password"
+
+let _textBox, _write, _click, _text, _reload
+let _errorMessage, _minLength
 
 export function init(taiko, eventEmitter) {
-  const { goto, below, textBox, write } = taiko;
-  _goto = goto;
-  _below = below;
-  _textBox = textBox;
-  _write = write;
+  const { textBox, write, click, text, reload } = taiko
+  _textBox = textBox
+  _write = write
+  _click = click
+  _text = text
+  _reload = reload
 }
 
-export function credentials(username, password) {
-  _username = username;
-  _password = password;
+export function options({ minLength, errorMessage }) {
+  _minLength = minLength
+  _errorMessage = errorMessage
 }
 
-export async function goto(url) {
-  await _goto(url);
-  if (String(url).endsWith("/login")) {
-    await fillForm();
+export async function validatePassword() {
+  let belowLimit = ""
+  for (let i = 1; i < _minLength; i++) {
+    belowLimit += i.toString()
   }
-}
+  await _write(belowLimit, _textBox('Password:'))
+  await _click('Submit')
+  assert (await _text(_errorMessage).exists())
 
-async function fillForm() {
-  await _write(_username, _textBox(_below("Username")));
-  await _write(_password, _textBox(_below("Password")));
+  await _reload()
+
+  let aboveLimit = ""
+  for (let i = 1; i < _minLength + 5; i++) {
+    aboveLimit += i.toString()
+  }
+  await _write(aboveLimit, _textBox('Password:'))
+  await _click('Submit')
+  assert (!(await _text(_errorMessage).exists()))
 }
