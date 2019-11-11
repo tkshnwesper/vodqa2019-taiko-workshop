@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const MIN_LENGTH = 6
+
+class App extends React.Component {
+  state = {
+    password: '',
+    error: false
+  }
+
+  validatePassword() {
+    const { password } = this.state
+    this.setState({ error: password.length <= MIN_LENGTH })
+  }
+
+  render() {
+    const { error } = this.state
+    return (
+      <div className="App">
+        <header className="App-header">
+          <p>
+            <label htmlFor="pwd">Password: </label>
+            <input id="pwd" onChange={(e) => this.setState({ password: e.target.value })} type="password" />
+          </p>
+          {error &&
+            <p>Password must be longer than {MIN_LENGTH} characters</p>
+          }
+          <p>
+            <button onClick={() => this.validatePassword()}>Submit</button>
+          </p>
+        </header>
+      </div>
+    );
+  }
 }
 
 export default App;
