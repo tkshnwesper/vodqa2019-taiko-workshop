@@ -19,9 +19,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
+          <h1>Registration page</h1>
           <p>
             <label htmlFor="pwd">Password: </label>
             <input id="pwd" onChange={(e) => this.setState({ password: e.target.value })} type="password" />
+            <div>Password must have minimum length of 6 characters</div>
           </p>
           {error &&
             <p>Password must be longer than {MIN_LENGTH} characters</p>
